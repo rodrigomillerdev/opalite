@@ -1,0 +1,145 @@
+.screen {
+  position: relative;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, color-mix(in srgb, var(--opal-3) 7%, transparent), transparent 70%),
+    var(--bg-0);
+}
+
+/* Faixa superior arrastável (a janela não tem barra de título nativa). */
+.dragBar {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: var(--titlebar-h);
+  -webkit-app-region: drag;
+}
+
+.panel {
+  width: min(400px, calc(100% - 48px));
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.title {
+  margin: 4px 0 0;
+  font-size: 26px;
+  font-weight: 620;
+  letter-spacing: -0.02em;
+}
+
+.tagline {
+  margin: 0;
+  color: var(--text-2);
+  font-size: var(--text-md);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.primary,
+.secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  font-weight: 540;
+  cursor: pointer;
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    background-position 600ms var(--ease);
+}
+
+/* Botão principal: o único lugar da tela com o gradiente iridescente cheio.
+   No hover o gradiente desliza, como o reflexo de uma opala girando. */
+.primary {
+  border: 0;
+  color: #111015;
+  background: var(--iridescent);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+}
+
+.primary:hover {
+  background-position: 100% 50%;
+}
+
+.secondary {
+  border: 1px solid var(--border-strong);
+  background: transparent;
+  color: var(--text-1);
+}
+
+.secondary:hover {
+  background: var(--bg-hover);
+  color: var(--text-0);
+}
+
+.recent {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.recentTitle {
+  margin: 0 0 2px 10px;
+  font-size: var(--text-xs);
+  font-weight: 560;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.recentList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.recentItem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.recentItem:hover {
+  background: var(--bg-hover);
+}
+
+.recentName {
+  color: var(--text-0);
+  font-weight: 520;
+}
+
+.recentPath {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text-3);
+  font-size: var(--text-xs);
+}

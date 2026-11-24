@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Opalite
+GenericName=Editor de notas
+Comment=Notas em Markdown, documentos, planilhas e apresentações, guardados numa pasta sua.
+Exec=@EXEC@ %F
+Icon=opalite
+Terminal=false
+Categories=Office;Utility;TextEditor;
+Keywords=notas;markdown;cofre;documentos;planilhas;notes;
+StartupWMClass=opalite
+StartupNotify=true

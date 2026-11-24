@@ -1,0 +1,26 @@
+OPALITE @VERSION@ para Linux
+@UNDERLINE@
+
+Notas em Markdown, documentos, planilhas e apresentações, guardados numa pasta sua.
+
+INSTALAR (só para o seu usuário, sem administrador)
+1. Extraia este .tar.gz inteiro.
+2. Abra um terminal nesta pasta e rode:   ./instalar.sh
+   O app é copiado para ~/.local/share/opalite e aparece no menu de aplicativos
+   com o ícone do Opalite. Também dá para abrir pelo terminal com: opalite
+3. Na primeira abertura, escolha ou crie uma pasta para as suas notas (o "cofre").
+
+Em Ubuntu, Debian, Pop!_OS, Mint e derivados, prefira o pacote .deb:
+   sudo apt install ./opalite_@VERSION@_@DEBARCH@.deb
+
+USAR SEM INSTALAR
+Abra a pasta "Opalite" e rode o arquivo "opalite".
+
+DESINSTALAR
+Rode ./desinstalar.sh (ou "sudo apt remove opalite", se instalou pelo .deb).
+As suas notas NÃO são apagadas: elas continuam nas pastas onde você as guardou.
+
+PRIVACIDADE
+Tudo fica no seu computador. O Opalite não envia suas notas para a internet.
+
+Licença MIT (veja o arquivo LICENSE dentro de Opalite/resources/app).

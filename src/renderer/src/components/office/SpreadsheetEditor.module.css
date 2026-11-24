@@ -1,0 +1,308 @@
+.select {
+  height: 28px;
+  width: 128px;
+  padding: 0 6px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--bg-1);
+  color: var(--text-1);
+  font: inherit;
+  font-size: var(--text-sm);
+}
+
+.formulaBar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-1);
+}
+
+.nameBox {
+  width: 92px;
+  padding: 0 10px;
+  border-right: 1px solid var(--border);
+  color: var(--text-1);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 32px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fx {
+  padding: 0 10px;
+  color: var(--text-3);
+  font-style: italic;
+  font-family: Georgia, serif;
+}
+
+.barInput {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 8px;
+  border: 0;
+  border-left: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-0);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  outline: none;
+}
+
+.barInput:focus {
+  background: var(--bg-2);
+}
+
+/* A grade usa cores claras próprias (como uma planilha), legíveis em qualquer tema. */
+.grid {
+  --sheet-bg: #ffffff;
+  --sheet-line: #e2e3e8;
+  --sheet-head: #f3f4f7;
+  --sheet-head-on: #dfe5ff;
+  --sheet-text: #1f2430;
+  --sheet-accent: #3d6df2;
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: auto;
+  background: var(--sheet-bg);
+  outline: none;
+  user-select: none;
+  cursor: cell;
+}
+
+.canvas {
+  position: relative;
+}
+
+.vline,
+.hline {
+  position: absolute;
+  background: var(--sheet-line);
+  pointer-events: none;
+}
+
+.vline {
+  width: 1px;
+}
+
+.hline {
+  height: 1px;
+}
+
+.cell {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 0 6px;
+  border-right: 1px solid var(--sheet-line);
+  border-bottom: 1px solid var(--sheet-line);
+  background: var(--sheet-bg);
+  color: var(--sheet-text);
+  font-size: 13px;
+  line-height: 23px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-variant-numeric: tabular-nums;
+}
+
+.cell[data-err] {
+  color: #c62828;
+}
+
+.selection {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  border: 1px solid var(--sheet-accent);
+  background: color-mix(in srgb, var(--sheet-accent) 10%, transparent);
+  transition:
+    left 60ms ease-out,
+    top 60ms ease-out,
+    width 60ms ease-out,
+    height 60ms ease-out;
+}
+
+.active {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  border: 2px solid var(--sheet-accent);
+  margin: -1px 0 0 -1px;
+  transition:
+    left 70ms ease-out,
+    top 70ms ease-out;
+}
+
+.colHeads,
+.rowHeads {
+  position: absolute;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.colHeads {
+  left: 0;
+  height: 24px;
+  background: var(--sheet-head);
+}
+
+.rowHeads {
+  top: 0;
+  width: 46px;
+  background: var(--sheet-head);
+}
+
+.colHead,
+.rowHead {
+  position: absolute;
+  box-sizing: border-box;
+  display: grid;
+  place-items: center;
+  border-right: 1px solid var(--sheet-line);
+  border-bottom: 1px solid var(--sheet-line);
+  background: var(--sheet-head);
+  color: #5b6170;
+  font-size: 11.5px;
+  cursor: default;
+}
+
+.colHead {
+  top: 0;
+  height: 24px;
+}
+
+.rowHead {
+  left: 0;
+  width: 46px;
+}
+
+.colHead[data-on],
+.rowHead[data-on] {
+  background: var(--sheet-head-on);
+  color: var(--sheet-accent);
+  font-weight: 600;
+}
+
+.resizer {
+  position: absolute;
+  right: -3px;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  z-index: 1;
+  cursor: col-resize;
+}
+
+.resizer:hover {
+  background: var(--sheet-accent);
+  opacity: 0.5;
+}
+
+.corner {
+  position: absolute;
+  z-index: 6;
+  width: 46px;
+  height: 24px;
+  border-right: 1px solid var(--sheet-line);
+  border-bottom: 1px solid var(--sheet-line);
+  background: var(--sheet-head);
+}
+
+.editor {
+  position: absolute;
+  z-index: 8;
+  box-sizing: border-box;
+  padding: 0 5px;
+  border: 2px solid var(--sheet-accent);
+  background: #fff;
+  color: var(--sheet-text);
+  font: inherit;
+  font-size: 13px;
+  outline: none;
+  box-shadow: 0 4px 14px -6px rgb(0 0 0 / 0.35);
+  user-select: text;
+}
+
+.tabs {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 32px;
+  padding: 0 8px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-1);
+  overflow-x: auto;
+}
+
+.tab {
+  height: 24px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-2);
+  font: inherit;
+  font-size: var(--text-sm);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.tab:hover {
+  background: var(--bg-hover);
+}
+
+.tab[data-on] {
+  background: var(--bg-active);
+  color: var(--text-0);
+  font-weight: 560;
+  box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+.tabInput {
+  width: 120px;
+  height: 24px;
+  padding: 0 8px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--bg-2);
+  color: var(--text-0);
+  font: inherit;
+  font-size: var(--text-sm);
+  outline: none;
+}
+
+.addTab {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 24px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-3);
+  cursor: pointer;
+}
+
+.addTab:hover {
+  background: var(--bg-hover);
+  color: var(--text-0);
+}
+
+.stats {
+  display: inline-flex;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.error {
+  margin: auto;
+  padding: 24px;
+  color: var(--text-2);
+}

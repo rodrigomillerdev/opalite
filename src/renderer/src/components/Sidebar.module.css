@@ -1,0 +1,77 @@
+.sidebar {
+  position: relative;
+  flex: none;
+  contain: layout paint;
+  animation: slideFromLeft var(--dur-enter) var(--ease-out);
+  width: var(--sidebar-w);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--bg-1);
+  border-right: 1px solid var(--border);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  padding: 0 8px;
+}
+
+.tabs,
+.tools {
+  display: flex;
+  gap: 2px;
+}
+
+.tab,
+.tool {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 26px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-3);
+  cursor: pointer;
+  transition:
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.tool {
+  width: 26px;
+  color: var(--text-2);
+}
+
+.tab:hover,
+.tool:hover {
+  background: var(--bg-hover);
+  color: var(--text-0);
+}
+
+.tab[data-active] {
+  background: var(--bg-active);
+  color: var(--text-0);
+}
+
+@keyframes slideFromLeft {
+  from {
+    opacity: 0.4;
+    transform: translateX(-10px);
+  }
+}
+
+@keyframes slideFromRight {
+  from {
+    opacity: 0.4;
+    transform: translateX(10px);
+  }
+}
+
+.right {
+  width: var(--rightbar-w, 280px);
+  animation-name: slideFromRight;
+}

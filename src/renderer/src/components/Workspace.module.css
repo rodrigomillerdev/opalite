@@ -1,0 +1,13 @@
+.workspace {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: var(--titlebar-h) minmax(0, 1fr) var(--statusbar-h);
+}
+
+.body {
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+}

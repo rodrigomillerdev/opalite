@@ -1,0 +1,149 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 12vh;
+  background: color-mix(in srgb, var(--bg-0) 55%, transparent);
+  animation: fade var(--dur-fast) var(--ease-out);
+}
+
+.prompt {
+  position: relative;
+  width: min(640px, calc(100% - 32px));
+  max-height: 68vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-1);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  animation: drop var(--dur-enter) var(--ease-out);
+}
+
+/* Filete iridescente no topo: a única cor forte da janela. */
+.prompt::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: var(--iridescent);
+  opacity: 0.8;
+}
+
+.input {
+  flex: none;
+  height: 48px;
+  padding: 0 18px;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-0);
+  font: inherit;
+  font-size: 15px;
+  outline: none;
+  user-select: text;
+}
+
+.input::placeholder {
+  color: var(--text-3);
+}
+
+.list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 6px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 36px;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  color: var(--text-1);
+  cursor: pointer;
+}
+
+.item {
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.item[data-selected] {
+  background: var(--bg-active);
+  color: var(--text-0);
+}
+
+.main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.main mark {
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.aside {
+  flex: none;
+  color: var(--text-3);
+  font-size: var(--text-xs);
+}
+
+.empty {
+  padding: 14px 12px;
+  color: var(--text-3);
+  font-size: var(--text-sm);
+}
+
+.footer {
+  flex: none;
+  display: flex;
+  gap: 18px;
+  padding: 8px 16px;
+  border-top: 1px solid var(--border);
+  color: var(--text-3);
+  font-size: var(--text-xs);
+}
+
+.keys {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.keys kbd,
+.footer kbd {
+  display: inline-block;
+  min-width: 20px;
+  padding: 1px 5px;
+  border: 1px solid var(--border-strong);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--bg-2);
+  color: var(--text-2);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  text-align: center;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.99);
+  }
+}

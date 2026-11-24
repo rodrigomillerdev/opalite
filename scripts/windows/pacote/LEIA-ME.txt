@@ -1,0 +1,27 @@
+﻿OPALITE 0.1.0 para Windows
+==========================
+
+Notas em Markdown, documentos, planilhas e apresentações, guardados numa pasta sua.
+
+INSTALAR
+1. Extraia este .zip inteiro (botão direito > Extrair tudo).
+2. Dê dois cliques em "Instalar Opalite.cmd".
+   O app é copiado para a sua pasta de programas e ganha atalhos na
+   Área de trabalho e no Menu Iniciar. Não precisa de administrador.
+3. Na primeira abertura, escolha ou crie uma pasta para as suas notas (o "cofre").
+
+USAR SEM INSTALAR
+Abra a pasta "Opalite" e dê dois cliques em "Opalite.exe".
+
+SE O WINDOWS AVISAR
+O Opalite ainda não tem assinatura digital comercial, então o Windows pode mostrar
+"O Windows protegeu o computador". Clique em "Mais informações" > "Executar assim mesmo".
+
+DESINSTALAR
+Dê dois cliques em "Desinstalar Opalite.cmd". As suas notas NÃO são apagadas:
+elas continuam nas pastas onde você as guardou.
+
+PRIVACIDADE
+Tudo fica no seu computador. O Opalite não envia suas notas para a internet.
+
+Licença MIT (veja o arquivo LICENSE dentro de Opalite\resources\app).

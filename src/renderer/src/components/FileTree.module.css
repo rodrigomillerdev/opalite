@@ -1,0 +1,141 @@
+.scroll {
+  contain: strict;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 2px 8px 16px;
+}
+
+.tree {
+  display: flex;
+  flex-direction: column;
+}
+
+.empty {
+  margin: 8px 8px;
+  color: var(--text-3);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 28px;
+  padding-right: 8px;
+  border-radius: var(--radius-sm);
+  color: var(--text-1);
+  font-size: var(--text-md);
+  cursor: pointer;
+  outline: none;
+  transition:
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.row:hover {
+  background: var(--bg-hover);
+  color: var(--text-0);
+}
+
+.row:focus-visible {
+  box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+.row[data-kind='folder'] {
+  color: var(--text-1);
+  font-weight: 520;
+}
+
+/* Nota ativa: fundo sutil e um filete iridescente à esquerda. */
+.row[data-active] {
+  background: var(--bg-active);
+  color: var(--text-0);
+}
+
+.row[data-active]::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--iridescent);
+  background-size: 100% 300%;
+  animation: shimmer 6s ease-in-out infinite alternate;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 50% 0%;
+  }
+  to {
+    background-position: 50% 100%;
+  }
+}
+
+.chevron {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  color: var(--text-3);
+  transition: transform var(--dur) var(--ease);
+}
+
+.chevron[data-open] {
+  transform: rotate(90deg);
+}
+
+.label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rename {
+  flex: 1;
+  min-width: 0;
+  height: 22px;
+  padding: 0 6px;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: var(--bg-2);
+  color: var(--text-0);
+  font: inherit;
+  outline: none;
+  user-select: text;
+}
+
+.badge {
+  flex: none;
+  margin-left: auto;
+  color: var(--text-3);
+}
+
+.group {
+  animation: unfold var(--dur-enter) var(--ease-out);
+  transform-origin: top;
+}
+
+@keyframes unfold {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.row:active {
+  transform: scale(0.99);
+}
+
+/* Pasta sob o arquivo sendo arrastado. */
+.row[data-drop-target] {
+  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 60%, transparent);
+  color: var(--text-0);
+}

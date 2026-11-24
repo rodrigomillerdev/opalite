@@ -1,0 +1,74 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 48px;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--bg-0) 22%, transparent);
+  animation: fade var(--dur-fast) var(--ease-out);
+}
+
+/* Moldura iridescente tracejada em volta da janela. */
+.overlay::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 14px;
+  padding: 2px;
+  background: var(--iridescent);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.85;
+}
+
+.overlay[data-target='folder']::before {
+  opacity: 0.35;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 20px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--bg-1);
+  box-shadow: var(--shadow);
+  color: var(--accent);
+  animation: rise var(--dur-enter) var(--ease-out);
+}
+
+.card div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card strong {
+  color: var(--text-0);
+  font-weight: 600;
+}
+
+.card span {
+  color: var(--text-2);
+  font-size: var(--text-sm);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}

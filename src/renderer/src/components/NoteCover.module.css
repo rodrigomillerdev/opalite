@@ -1,0 +1,238 @@
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  overflow: hidden;
+  will-change: transform;
+  animation: coverIn var(--dur-enter) var(--ease-out);
+}
+
+@keyframes coverIn {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Funde a capa com o fundo do editor na parte de baixo. */
+.cover::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--bg-2) 35%, transparent));
+  pointer-events: none;
+}
+
+.fill,
+.image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.image {
+  object-fit: cover;
+  user-select: none;
+}
+
+.cover[data-repositioning] .image {
+  cursor: ns-resize;
+}
+
+.fill[data-missing] {
+  display: grid;
+  place-items: center;
+  background: var(--bg-1);
+  color: var(--text-3);
+  font-size: var(--text-sm);
+}
+
+.controls {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--bg-1) 82%, transparent);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+}
+
+.cover:hover .controls,
+.cover[data-repositioning] .controls,
+.controls:focus-within {
+  opacity: 1;
+  transform: none;
+}
+
+.controls button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 26px;
+  padding: 0 9px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-0);
+  font: inherit;
+  font-size: var(--text-xs);
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background: var(--bg-hover);
+}
+
+.hint {
+  padding: 0 8px;
+  color: var(--text-2);
+  font-size: var(--text-xs);
+}
+
+/* ------------------------------------------------------------ escolher capa */
+
+.pickerBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+}
+
+.picker {
+  position: absolute;
+  top: 120px;
+  right: max(24px, calc(50% - 360px));
+  width: 440px;
+  max-height: calc(100% - 160px);
+  overflow: auto;
+  padding: 8px 14px 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--bg-1);
+  box-shadow: var(--shadow);
+  animation: pop var(--dur-enter) var(--ease-out);
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.98);
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tabs button {
+  height: 28px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-2);
+  font: inherit;
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+
+.tabs button[data-on] {
+  background: var(--bg-active);
+  color: var(--text-0);
+}
+
+.section h4 {
+  margin: 14px 0 8px;
+  color: var(--text-3);
+  font-size: var(--text-xs);
+  font-weight: 560;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.grid[data-images] {
+  margin-top: 14px;
+}
+
+.tile {
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: var(--radius-md);
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text-0) 10%, transparent);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.tile[data-image] {
+  background-color: var(--bg-2);
+}
+
+.tile:hover {
+  transform: scale(1.04);
+}
+
+.tile:active {
+  transform: scale(0.97);
+}
+
+.empty {
+  margin: 16px 4px;
+  color: var(--text-3);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+}
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 28px 16px;
+  border: 1.5px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  color: var(--accent);
+  text-align: center;
+  cursor: pointer;
+  transition:
+    border-color var(--dur) var(--ease-out),
+    background-color var(--dur) var(--ease-out);
+}
+
+.upload strong {
+  color: var(--text-0);
+  font-weight: 560;
+}
+
+.upload span {
+  color: var(--text-2);
+  font-size: var(--text-xs);
+}
+
+.upload:hover,
+.upload[data-active] {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}

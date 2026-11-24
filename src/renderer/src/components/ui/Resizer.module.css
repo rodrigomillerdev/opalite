@@ -1,0 +1,44 @@
+.handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 5;
+  width: 6px;
+  cursor: col-resize;
+  touch-action: none;
+  outline: none;
+}
+
+.handle[data-side='left'] {
+  right: 0;
+}
+
+.handle[data-side='right'] {
+  left: 0;
+}
+
+.handle::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.handle[data-side='left']::after {
+  right: 0;
+}
+
+.handle[data-side='right']::after {
+  left: 0;
+}
+
+.handle:hover::after,
+.handle:focus-visible::after,
+:global(.is-resizing) .handle::after {
+  opacity: 0.7;
+  transition-delay: 120ms;
+}
