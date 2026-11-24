@@ -185,7 +185,7 @@ sha256sum -c SHA256SUMS.txt
 
 ### Linguagens
 
-| Linguagem | Onde é usada | Linhas | Proporção |
+| Linguagem | Onde é usada | Linhas | % das linhas |
 |---|---|---:|---:|
 | **TypeScript** (TS/TSX) | Todo o app: processo principal, ponte (preload), interface React, editores, conversores e testes | ~25.900 | 73 % |
 | **CSS** (CSS Modules) | Estilos de cada componente, temas e tokens de design | ~8.750 | 25 % |
@@ -193,6 +193,9 @@ sha256sum -c SHA256SUMS.txt
 | **PowerShell** | Instalador por usuário e atalhos no Windows | ~160 | < 1 % |
 | **Shell (Bash)** | Instalador e desinstalador do pacote `.tar.gz` no Linux | ~75 | < 1 % |
 | **Batch (.cmd)** e **HTML** | Atalhos "Instalar/Desinstalar Opalite" no Windows; página base da interface | ~30 | < 1 % |
+
+> A barra de linguagens do GitHub mede o tamanho dos arquivos em bytes (por isso mostra
+> TypeScript com uma fatia maior); esta tabela conta linhas de código.
 
 O app inteiro roda em **uma linguagem só** (TypeScript), do processo principal à interface —
 o que permite reaproveitar código entre eles (parser de links, tipos compartilhados).
